@@ -36,6 +36,7 @@ gem 'jbuilder', '~> 2.5'
 # code exam prerequisite
 gem 'slim', '~> 3.0.9'
 gem 'rspec', '~> 3.7'
+gem 'responders'
 
 # for API performance serving
 gem 'redis', '~> 4.0'
