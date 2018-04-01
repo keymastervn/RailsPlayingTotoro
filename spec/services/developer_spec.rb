@@ -33,31 +33,34 @@ RSpec.describe DeveloperService do
       before {
         params = {:languages => 'vn'}
         @service = DeveloperService.new(params)
+        @dev = @service.all_dev
       }
 
-      it { expect(@service.search).to include(first_developer)}
-      it { expect(@service.search).not_to include(second_developer)}
+      it { expect(@service.search(@dev)).to include(first_developer)}
+      it { expect(@service.search(@dev)).not_to include(second_developer)}
     end
 
     context 'when search one type with 2 terms' do
       before {
         params = {:programming_langs => 'ruby,java'}
         @service = DeveloperService.new(params)
+        @dev = @service.all_dev
       }
 
-      it { expect(@service.search).to include(first_developer)}
-      it { expect(@service.search).not_to include(second_developer)}
+      it { expect(@service.search(@dev)).to include(first_developer)}
+      it { expect(@service.search(@dev)).not_to include(second_developer)}
     end
 
     context 'when search with combined terms and types' do
       before {
         params = {:languages => 'jp', :programming_langs => 'ruby'}
         @service = DeveloperService.new(params)
+        @dev = @service.all_dev
       }
 
-      it { expect(@service.search).to include(first_developer)}
-      it { expect(@service.search).to include(second_developer)}
-      it { expect(@service.search).not_to include(third_developer)}
+      it { expect(@service.search(@dev)).to include(first_developer)}
+      it { expect(@service.search(@dev)).to include(second_developer)}
+      it { expect(@service.search(@dev)).not_to include(third_developer)}
     end
   end
 end

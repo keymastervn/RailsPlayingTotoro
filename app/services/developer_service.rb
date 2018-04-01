@@ -14,11 +14,16 @@ class DeveloperService
     @@all_dev ||= Developer.all
   end
 
-  def search
+  def some_dev
+    ids = params[:id].to_s.split(',').sort.flatten.uniq
+
+    ids.present? ? devs = Developer.find(ids).to_a : all_dev
+  end
+
+  def search(devs)
     languages = params[:languages].to_s.split(',')
     prog_langs = params[:programming_langs].to_s.split(',')
 
-    devs = all_dev
     languages.each{|l|
       devs = devs.select{|x| x.can_speak l}
     }
@@ -28,5 +33,17 @@ class DeveloperService
     }
 
     devs
+  end
+
+  # CACHE
+  def build_key
+    "#{params[:id].to_s}|#{params[:languages].to_s}|#{params[:programming_langs].to_s}"
+  end
+
+  # API
+  def serve
+    Rails.cache.fetch(build_key, expires_in: 30.minutes) do
+      self.search(some_dev)
+    end
   end
 end
