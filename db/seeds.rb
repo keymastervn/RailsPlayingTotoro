@@ -30,8 +30,6 @@ ProgrammingLanguage.create(name: 'c++')
 ProgrammingLanguage.create(name: 'java')
 ProgrammingLanguage.create(name: 'scala')
 ProgrammingLanguage.create(name: 'golang')
-ProgrammingLanguage.create(name: 'c#')
-ProgrammingLanguage.create(name: 'rust')
 
 # random create serveral relationships between a developer and langs
 # as well as programming languages, check distinction for uniqueness
@@ -45,3 +43,6 @@ Developer.all.each {|dev|
   end
 }
 
+# no one use these languages
+ProgrammingLanguage.create(name: 'c#')
+ProgrammingLanguage.create(name: 'rust')
