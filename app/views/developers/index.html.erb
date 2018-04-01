@@ -1,11 +1,25 @@
 <html>
   <head>
     <title> You are here, at Developer controller</title>
+    <%= render 'layouts/breadcrumb' %>
   </head>
 
   <body>
-    <%= render 'layouts/breadcrumb' %>
+    <h1> Developers </h1>
 
+    <!-- Datatable -->
+    <%= content_tag :table, role: :datatable, data: { url: developers_path(format: :json)} do %>
+      <thead>
+        <tr>
+          <th>Email</th>
+          <th>Programming Languages</th>
+          <th>Languages</th>
+        </tr>
+      </thead>
 
+      <tbody>
+      </tbody>
+    <% end %>
+    <!-- End datatable -->
   </body>
 </html>
