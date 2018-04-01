@@ -2,7 +2,7 @@ class Api::DevelopersController < Api::BaseController
 
   # GET /api/developers
   def index
-    json_response developer_service.serve
+     @developers = developer_service.serve
   end
 
   protected
