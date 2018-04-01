@@ -4,9 +4,9 @@ require 'rails_helper'
 RSpec.describe DeveloperService do
 
   # Factorying
-  let!(:first_developer) { FactoryBot.create(:developer, email: 'a') }
-  let!(:second_developer) { FactoryBot.create(:developer, email: 'b') }
-  let!(:third_developer) { FactoryBot.create(:developer, email: 'c') }
+  let!(:first_developer) { FactoryBot.create(:developer, id: 1, email: 'a') }
+  let!(:second_developer) { FactoryBot.create(:developer, id: 2, email: 'b') }
+  let!(:third_developer) { FactoryBot.create(:developer, id: 3, email: 'c') }
   let!(:jp_language) { FactoryBot.create(:language, code: 'jp') }
   let!(:vn_language) { FactoryBot.create(:language, code: 'vn') }
   let!(:en_language) { FactoryBot.create(:language, code: 'en') }
@@ -62,5 +62,17 @@ RSpec.describe DeveloperService do
       it { expect(@service.search(@dev)).to include(second_developer)}
       it { expect(@service.search(@dev)).not_to include(third_developer)}
     end
+  end
+
+  describe '#some_dev' do
+    before {
+      params = {:id => '1,2'}
+      @service = DeveloperService.new(params)
+      @dev = @service.some_dev
+    }
+
+    it { expect(@dev).to include(first_developer) }
+    it { expect(@dev).to include(second_developer) }
+    it { expect(@dev).not_to include(third_developer) }
   end
 end
