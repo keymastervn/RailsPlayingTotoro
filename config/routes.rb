@@ -5,9 +5,9 @@ Rails.application.routes.draw do
   # get 'programming_languages#index'
   # get 'interviews#index'
 
-  resource :developers
-  resource :programming_languages
-  resource :interviews
+  resources :developers
+  resources :programming_languages
+  resources :interviews
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
