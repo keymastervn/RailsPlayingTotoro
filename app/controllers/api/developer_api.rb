@@ -1,6 +1,6 @@
 class Api::DevelopersController < Api::BaseController
 
-  # GET /api/developers
+  # GET /api/developers.json
   def index
      @developers = developer_service.serve
   end
