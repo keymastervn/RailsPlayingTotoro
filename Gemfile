@@ -37,6 +37,10 @@ gem 'jbuilder', '~> 2.5'
 gem 'slim', '~> 3.0.9'
 gem 'rspec-rails', '~> 3.7'
 gem 'responders'
+gem 'rails-assets-jquery', source: 'https://rails-assets.org'
+gem 'rails-assets-datatables', source: 'https://rails-assets.org'
+# pagination
+gem 'kaminari'
 
 # for API performance serving
 gem 'redis', '~> 4.0'

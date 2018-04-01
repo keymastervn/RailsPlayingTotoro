@@ -1,2 +1,47 @@
-<h1>ProgrammingLanguage#index</h1>
-<p>Find me in app/views/programming_language/index.html.erb</p>
+<html>
+  <head>
+    <title> You are here, at Programming Language controller</title>
+    <%= render 'layouts/breadcrumb' %>
+  </head>
+  <body>
+    <h1> List all programming languages </h1>
+    <table>
+      <thead>
+        <tr>
+          <th> ID </th>
+          <th> Name </th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @programming_languages.each do |pl| %>
+        <tr>
+          <td> <%= pl.id %> </td>
+          <td> <%= pl.name %> </td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+
+    <br>
+
+    <h1> List programming languages that no one used </h1>
+    <table>
+      <thead>
+        <tr>
+          <th> ID </th>
+          <th> Name </th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @not_used.each do |pl| %>
+        <tr>
+          <td> <%= pl.id %> </td>
+          <td> <%= pl.name %> </td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </body>
+</html>

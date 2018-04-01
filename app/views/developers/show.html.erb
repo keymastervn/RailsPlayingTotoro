@@ -1,0 +1,16 @@
+<p>
+  <strong>Email:</strong>
+  <%= @developer.email %>
+</p>
+
+<p>
+  <strong>Programming Language:</strong>
+  <%= @developer.programming_languages.collect(&:name).join(', ') %>
+</p>
+
+<p>
+  <strong>Language:</strong>
+  <%= @developer.languages.collect(&:code).join(', ') %>
+</p>
+
+<%= link_to 'Back', developers_path %>

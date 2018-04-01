@@ -51,7 +51,7 @@ class DevelopersController < ApplicationController
 
   private
   def set_dev
-    @developer = Developer.where(id: params[:id])
+    @developer = Developer.find(params[:id])
   end
 
   # Never trust parameters from the scary internet, only allow the white list through.
